@@ -16,10 +16,28 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace MyFirstWpfApp {
+
+    public class MyButton : Button {
+        public Type UserWindowType { get; set; }
+
+        protected override void OnClick() {
+            base.OnClick();
+            Window win = Activator.CreateInstance(this.UserWindowType) as Window;
+            if (win != null) {
+                win.ShowDialog();
+            }
+        }
+    }
+
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
     public partial class MainWindow : Window {
+
+        public static string WindowTitle = "妳的的名字還在糾結我";
+        public static string ShowTitle { get { return "誰試圖靠近妳，誰的聲音已經改變妳"; } }
+
+
         public MainWindow() {
             InitializeComponent();
         }
@@ -27,6 +45,10 @@ namespace MyFirstWpfApp {
         private void btn1_Click(object sender , RoutedEventArgs e) {
             Human human = (Human)this.FindResource("human");
             MessageBox.Show(human.Child.Name);
+        }
+
+        private void Button_Click(object sender , RoutedEventArgs e) {
+            string str = FindResource("myString") as string;
         }
     }
 

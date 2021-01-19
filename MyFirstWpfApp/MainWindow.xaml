@@ -1,21 +1,32 @@
 ﻿<Window x:Class="MyFirstWpfApp.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:sys="clr-namespace:System;assembly=mscorlib"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:c="System.Windows.Con"
         xmlns:local="clr-namespace:MyFirstWpfApp"
+        xmlns:common="clr-namespace:Common;assembly=MyLibA"
+        xmlns:controls="clr-namespace:Controls;assembly=MyLibA"
         mc:Ignorable="d"
-        Title="MainWindow" Width="300" Height="188" >
-    <Grid VerticalAlignment="Center" HorizontalAlignment="Center">
-        <Grid.RowDefinitions>
+        Title="{x:Static local:MainWindow.WindowTitle}" Width="300" Height="188" >
+
+    <Window.Resources>
+        <!--<sys:String x:Key="myString">Hello WPF I LOVE U</sys:String>-->
+        <Style x:Key="{x:Type Button}" TargetType="{x:Type Button}">
+            <Setter Property="Width" Value="60"></Setter>
+            <Setter Property="Height" Value="36"></Setter>
+            <Setter Property="Margin" Value="5"></Setter>
+        </Style>
+    </Window.Resources>
+    <!--<Grid.RowDefinitions>
             <RowDefinition Height="11*"/>
             <RowDefinition Height="13*"/>
-        </Grid.RowDefinitions>
-        <!--<Rectangle x:Name="rectangle" Width="200" Height="120">
+        </Grid.RowDefinitions>-->
+    <!--<Rectangle x:Name="rectangle" Width="200" Height="120">
             -->
-        <!--属性标签形式 以对象形式为属性赋值-->
-        <!--
+    <!--属性标签形式 以对象形式为属性赋值-->
+    <!--
             <Rectangle.Fill>
                 <LinearGradientBrush>
                     <LinearGradientBrush.GradientStops>
@@ -27,8 +38,7 @@
             </Rectangle.Fill>
         </Rectangle>-->
 
-
-        <Ellipse Width="120" Height="120" Grid.RowSpan="2">
+    <!--<Ellipse Width="120" Height="120" Grid.RowSpan="2">
 
             <Ellipse.Fill>
                 <RadialGradientBrush GradientOrigin="0.25,0.25" RadiusX="0.75" RadiusY="0.75">
@@ -40,8 +50,85 @@
                 </RadialGradientBrush>
             </Ellipse.Fill>
 
-        </Ellipse>
-        <!--<Button Background="AntiqueWhite" x:Name="btn1" Click="btn1_Click"></Button>-->
-    </Grid>
+        </Ellipse>-->
+
+    <!--<Button Background="AntiqueWhite" x:Name="btn1" Click="btn1_Click"></Button>-->
+
+    <!--<TextBox Text="{Binding ElementName=slider1,Path=Value,Mode=OneWay}" Margin="5"></TextBox>-->
+    <!--标记扩展-->
+
+    <!--<TextBox Margin="5">
+            <TextBox.Text>
+                <Binding ElementName="slider1" Path="Value" Mode="OneWay"></Binding>
+            </TextBox.Text>
+        </TextBox>-->
+    <!--属性标签-->
+
+    <!--<Slider x:Name="slider1" Margin="5"></Slider>
+        <Button x:Name="button1" Click="btn2_Click" Height="25" Width="80">点击我</Button>
+        <x:Code>
+            <![CDATA[
+                 private void btn2_Click(object sender , RoutedEventArgs e) {
+            
+                        MessageBox.Show("haha");
+        }
+            
+            ]]>
+        </x:Code>-->
+
+    <!--<TextBox x:Name="textBox" Margin="5"></TextBox>
+        <Button Content="OK" Margin="5" Click="Button_Click"></Button>-->
+
+    <!--<TextBox x:Name="textBox1" x:FieldModifier="public" Margin="5"></TextBox>
+        <TextBox x:Name="textBox2" x:FieldModifier="public" Margin="5"></TextBox>
+        <TextBox x:Name="textBox3"  Margin="5"></TextBox>-->
+
+
+    <!--<StackPanel Background="Gray">
+        <TextBox Text="{StaticResource ResourceKey=myString}" Margin="5"></TextBox>
+        <TextBox x:Name="textBox1" Margin="5"></TextBox>
+        <Button Content="Show" Click="Button_Click" Margin="5"></Button>
+    </StackPanel>-->
+
+
+    <!--<StackPanel>
+        -->
+    <!--<local:MyButton Content="Show" UserWindowType="{x:Type TypeName=local:MyWindow}" Margin="5"></local:MyButton>-->
+    <!--
+        <local:MyButton Content="Show" UserWindowType="{x:Type TypeName=local:MyWindow}" Margin="5">  </local:MyButton>
+    </StackPanel>-->
+
+
+    <!--<StackPanel>
+        <Button Content="OK"></Button>
+        <Button Content="OK"></Button>
+        <Button Content="OK"></Button>
+        -->
+    <!--<Button Content="OK" Style="{x:Null}"></Button>-->
+    <!--
+        <Button Content="OK" >
+            <Button.Style>
+                <x:Null></x:Null>
+            </Button.Style>
+        </Button>
+    </StackPanel>-->
+
+
+    <!--<Grid Background="LightBlue">
+        <ListBox Margin="5" >
+            <ListBox.ItemsSource>
+                <x:Array Type="sys:String">
+                    <sys:String>Tim</sys:String>
+                    <sys:String>Tom</sys:String>
+                    <sys:String>Victor</sys:String>
+                </x:Array>
+            </ListBox.ItemsSource>
+        </ListBox>
+    </Grid>-->
+
+    <StackPanel>
+        <TextBlock FontSize="32" Text="{x:Static local:MainWindow.ShowTitle}"></TextBlock>
+    </StackPanel>
 
 </Window>
+<!--pdf看到25页-->
